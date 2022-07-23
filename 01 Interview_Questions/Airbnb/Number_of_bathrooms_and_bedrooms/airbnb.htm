@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="airbnb_files/css.css" rel="stylesheet"><link href="airbnb_files/jquery.css" rel="stylesheet"><title>StrataScratch</title><script type="text/javascript" async="" src="airbnb_files/analytics.js"></script><script type="text/javascript" async="" src="airbnb_files/js_002"></script><script>!function(n,u){n._rwq=u,n[u]=n[u]||function(){(n[u].q=n[u].q||[]).push(arguments)}}(window,"rewardful")</script><script async="" src="airbnb_files/rw.js" data-rewardful="509d71"></script><script async="" src="airbnb_files/js"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-115949776-1")</script><link rel="shortcut icon" href="https://platform.stratascratch.com/fav.png"><link href="airbnb_files/stylesd7ef1007257ddee643e8.css" rel="stylesheet"><style>.strata-editor-dragbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12px;
+  cursor: row-resize;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9FZGl0b3JEcmFnQmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYix1QkFBdUI7RUFDdkIsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixrQkFBa0I7QUFDcEIiLCJzb3VyY2VzQ29udGVudCI6WyIuc3RyYXRhLWVkaXRvci1kcmFnYmFyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGhlaWdodDogMTJweDtcbiAgY3Vyc29yOiByb3ctcmVzaXplO1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>.strata-editor-container {
+  position: relative;
+  background-color: #f5f5f5;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.strata-editor-container .ace_editor {
+  line-height: 1.4286;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #333;
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.ace-github .ace_print-margin {
+  background: transparent !important;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9Db2RlRWRpdG9yLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFrQjtFQUNsQix5QkFBeUI7RUFDekIsa0JBQWtCO0VBQ2xCLHNCQUFzQjtFQUN0QixtQkFBbUI7QUFDckI7O0FBRUEsdURBQXVEO0FBQ3ZEO0VBQ0UsbUJBQW1CO0VBQ25CLHFCQUFxQjtFQUNyQixxQkFBcUI7RUFDckIsV0FBVztFQUNYLDhEQUE4RDtBQUNoRTs7QUFFQSx1REFBdUQ7QUFDdkQ7RUFDRSxrQ0FBa0M7QUFDcEMiLCJzb3VyY2VzQ29udGVudCI6WyIuc3RyYXRhLWVkaXRvci1jb250YWluZXIge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmNWY1ZjU7XG4gIGJvcmRlci1yYWRpdXM6IDJweDtcbiAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbn1cblxuLyogc3R5bGVsaW50LWRpc2FibGUtbmV4dC1saW5lIHNlbGVjdG9yLWNsYXNzLXBhdHRlcm4gKi9cbi5zdHJhdGEtZWRpdG9yLWNvbnRhaW5lciAuYWNlX2VkaXRvciB7XG4gIGxpbmUtaGVpZ2h0OiAxLjQyODY7XG4gIHdvcmQtYnJlYWs6IGJyZWFrLWFsbDtcbiAgd29yZC13cmFwOiBicmVhay13b3JkO1xuICBjb2xvcjogIzMzMztcbiAgZm9udC1mYW1pbHk6IE1lbmxvLCBNb25hY28sIENvbnNvbGFzLCAnQ291cmllciBOZXcnLCBtb25vc3BhY2U7XG59XG5cbi8qIHN0eWxlbGludC1kaXNhYmxlLW5leHQtbGluZSBzZWxlY3Rvci1jbGFzcy1wYXR0ZXJuICovXG4uYWNlLWdpdGh1YiAuYWNlX3ByaW50LW1hcmdpbiB7XG4gIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG59XG4iXSwic291cmNlUm9vdCI6IiJ9 */</style><style>.strata-editor-extension {
+  color: #fff;
+  background-color: #ccc;
+}
+
+.strata-editor-caption-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 9px;
+  font-size: 1rem;
+}
+
+.strata-editor-dataset-tables {
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+  background-color: #b7e9f0;
+  color: #249cac;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9FZGl0b3JDYXB0aW9uQmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQVc7RUFDWCxzQkFBc0I7QUFDeEI7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsOEJBQThCO0VBQzlCLG1CQUFtQjtFQUNuQixnQkFBZ0I7RUFDaEIsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLHNCQUFzQjtFQUN0QixpQkFBaUI7RUFDakIseUJBQXlCO0VBQ3pCLGNBQWM7QUFDaEIiLCJzb3VyY2VzQ29udGVudCI6WyIuc3RyYXRhLWVkaXRvci1leHRlbnNpb24ge1xuICBjb2xvcjogI2ZmZjtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjYztcbn1cblxuLnN0cmF0YS1lZGl0b3ItY2FwdGlvbi1iYXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHBhZGRpbmc6IDJweCA5cHg7XG4gIGZvbnQtc2l6ZTogMXJlbTtcbn1cblxuLnN0cmF0YS1lZGl0b3ItZGF0YXNldC10YWJsZXMge1xuICBib3JkZXItcmFkaXVzOiAwLjI1cmVtO1xuICBwYWRkaW5nOiAwIDAuNXJlbTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I3ZTlmMDtcbiAgY29sb3I6ICMyNDljYWM7XG59XG4iXSwic291cmNlUm9vdCI6IiJ9 */</style><style>.strata-editor-spin {
+  animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9RdWVyeUJ1dHRvbi5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQ0FBb0M7QUFDdEM7O0FBRUE7RUFDRTtJQUNFLHVCQUF1QjtFQUN6Qjs7RUFFQTtJQUNFLHlCQUF5QjtFQUMzQjtBQUNGIiwic291cmNlc0NvbnRlbnQiOlsiLnN0cmF0YS1lZGl0b3Itc3BpbiB7XG4gIGFuaW1hdGlvbjogc3BpbiAxLjVzIGluZmluaXRlIGxpbmVhcjtcbn1cblxuQGtleWZyYW1lcyBzcGluIHtcbiAgZnJvbSB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gIH1cblxuICB0byB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcbiAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>.strata-editor-buttons-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.strata-editor-hotkey-message {
+  margin-top: 0.25rem;
+  color: rgb(130, 130, 130);
+  font-size: 0.8125rem;
+  text-align: right;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9RdWVyeUJ1dHRvbnNTZWN0aW9uLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYix5QkFBeUI7RUFDekIsbUJBQW1CO0VBQ25CLFdBQVc7QUFDYjs7QUFFQTtFQUNFLG1CQUFtQjtFQUNuQix5QkFBeUI7RUFDekIsb0JBQW9CO0VBQ3BCLGlCQUFpQjtBQUNuQiIsInNvdXJjZXNDb250ZW50IjpbIi5zdHJhdGEtZWRpdG9yLWJ1dHRvbnMtd3JhcHBlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogMC41cmVtO1xufVxuXG4uc3RyYXRhLWVkaXRvci1ob3RrZXktbWVzc2FnZSB7XG4gIG1hcmdpbi10b3A6IDAuMjVyZW07XG4gIGNvbG9yOiByZ2IoMTMwLCAxMzAsIDEzMCk7XG4gIGZvbnQtc2l6ZTogMC44MTI1cmVtO1xuICB0ZXh0LWFsaWduOiByaWdodDtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.strata-editor-result-table {
+  font-size: 1rem;
+}
+
+.table-striped.strata-editor-result-table tr.wrong {
+  background-color: #ffb9b9;
+}
+
+.table-striped.strata-editor-result-table tr.correct {
+  background-color: #90ee90;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9RdWVyeVJlc3VsdFRhYmxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7QUFDakI7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0IiLCJzb3VyY2VzQ29udGVudCI6WyIuc3RyYXRhLWVkaXRvci1yZXN1bHQtdGFibGUge1xuICBmb250LXNpemU6IDFyZW07XG59XG5cbi50YWJsZS1zdHJpcGVkLnN0cmF0YS1lZGl0b3ItcmVzdWx0LXRhYmxlIHRyLndyb25nIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmYjliOTtcbn1cblxuLnRhYmxlLXN0cmlwZWQuc3RyYXRhLWVkaXRvci1yZXN1bHQtdGFibGUgdHIuY29ycmVjdCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM5MGVlOTA7XG59XG4iXSwic291cmNlUm9vdCI6IiJ9 */</style><style>.strata-editor-output-title {
+  margin-top: 1rem;
+  font-size: 1.1875rem;
+  color: rgb(130, 130, 130);
+}
+
+.white-space-pre-wrap {
+  white-space: pre-wrap;
+}
+
+.strata-editor-console-output {
+  padding: 1rem 2rem;
+}
+
+.strata-editor-alert {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+
+.strata-editor-alert.info {
+  background-color: #b7e9f0;
+  color: #249cac;
+}
+
+.strata-editor-alert.warning {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.strata-editor-alert.danger {
+  background-color: #ffb9b9;
+  color: #c60201;
+}
+
+.strata-editor-results-table-wrapper {
+  max-height: 24rem;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.strata-editor-results-table-wrapper table {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9FeGVjdXRpb25SZXN1bHRzLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFnQjtFQUNoQixvQkFBb0I7RUFDcEIseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0UscUJBQXFCO0FBQ3ZCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0Usd0JBQXdCO0VBQ3hCLG1CQUFtQjtFQUNuQixlQUFlO0VBQ2Ysc0JBQXNCO0FBQ3hCOztBQUVBO0VBQ0UseUJBQXlCO0VBQ3pCLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsY0FBYztBQUNoQjs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsaUJBQWlCO0VBQ2pCLGNBQWM7RUFDZCxtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEIiLCJzb3VyY2VzQ29udGVudCI6WyIuc3RyYXRhLWVkaXRvci1vdXRwdXQtdGl0bGUge1xuICBtYXJnaW4tdG9wOiAxcmVtO1xuICBmb250LXNpemU6IDEuMTg3NXJlbTtcbiAgY29sb3I6IHJnYigxMzAsIDEzMCwgMTMwKTtcbn1cblxuLndoaXRlLXNwYWNlLXByZS13cmFwIHtcbiAgd2hpdGUtc3BhY2U6IHByZS13cmFwO1xufVxuXG4uc3RyYXRhLWVkaXRvci1jb25zb2xlLW91dHB1dCB7XG4gIHBhZGRpbmc6IDFyZW0gMnJlbTtcbn1cblxuLnN0cmF0YS1lZGl0b3ItYWxlcnQge1xuICBwYWRkaW5nOiAwLjc1cmVtIDEuMjVyZW07XG4gIG1hcmdpbi1ib3R0b206IDFyZW07XG4gIGZvbnQtc2l6ZTogMXJlbTtcbiAgYm9yZGVyLXJhZGl1czogMC4yNXJlbTtcbn1cblxuLnN0cmF0YS1lZGl0b3ItYWxlcnQuaW5mbyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNiN2U5ZjA7XG4gIGNvbG9yOiAjMjQ5Y2FjO1xufVxuXG4uc3RyYXRhLWVkaXRvci1hbGVydC53YXJuaW5nIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjNjZDtcbiAgY29sb3I6ICM4NTY0MDQ7XG59XG5cbi5zdHJhdGEtZWRpdG9yLWFsZXJ0LmRhbmdlciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmI5Yjk7XG4gIGNvbG9yOiAjYzYwMjAxO1xufVxuXG4uc3RyYXRhLWVkaXRvci1yZXN1bHRzLXRhYmxlLXdyYXBwZXIge1xuICBtYXgtaGVpZ2h0OiAyNHJlbTtcbiAgb3ZlcmZsb3c6IGF1dG87XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG59XG5cbi5zdHJhdGEtZWRpdG9yLXJlc3VsdHMtdGFibGUtd3JhcHBlciB0YWJsZSB7XG4gIG1hcmdpbi1ib3R0b206IDA7XG59XG4iXSwic291cmNlUm9vdCI6IiJ9 */</style><style>.strata-editor-code-widget {
+  margin-bottom: 2rem;
+}
+
+.strata-editor-question-link {
+  font-size: 1rem;
+}
+
+.strata-editor-error-inset {
+  position: absolute;
+  inset: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f2f2f2;
+  font-weight: 500;
+  z-index: 5;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9Db2RlRWRpdG9yV2lkZ2V0LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsV0FBVztFQUNYLGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsdUJBQXVCO0VBQ3ZCLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIseUJBQXlCO0VBQ3pCLGdCQUFnQjtFQUNoQixVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuc3RyYXRhLWVkaXRvci1jb2RlLXdpZGdldCB7XG4gIG1hcmdpbi1ib3R0b206IDJyZW07XG59XG5cbi5zdHJhdGEtZWRpdG9yLXF1ZXN0aW9uLWxpbmsge1xuICBmb250LXNpemU6IDFyZW07XG59XG5cbi5zdHJhdGEtZWRpdG9yLWVycm9yLWluc2V0IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBpbnNldDogMXJlbTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2YyZjJmMjtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgei1pbmRleDogNTtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><script src="airbnb_files/v3"></script></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"><header class="top" style="position: relative; z-index: 1000;"><nav class="navbar-static-top navbar-inverse navbar navbar-expand-md navbar-light"><a href="https://stratascratch.com/" class="navbar-brand"><img src="airbnb_files/superset-logo.png" alt="Superset Logo" width="126"></a><button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler collapsed"><span class="navbar-toggler-icon"></span></button><div class="navbar-collapse collapse" id="basic-navbar-nav"><div class="mr-auto navbar-nav"><li><a href="https://platform.stratascratch.com/coding" data-rb-event-key="/coding" class="navbar-marging nav-link">Coding Questions</a></li><li><a href="https://platform.stratascratch.com/technical" data-rb-event-key="/technical" class="navbar-marging nav-link">Non-coding Questions</a></li></div><div class="navbar-nav"><li><a href="https://platform.stratascratch.com/pricing" data-rb-event-key="/pricing" class="navbar-marging nav-link"><i class="fa fa-lock" style="color: gold;"></i> Upgrade to Premium</a></li><li class="float-right"><div class="dropdown"><a href="" class="navbar-marging nav-link"><i class="fa fa-user"></i> Profile</a></div></li><li class="float-right"><a href="#" class="navbar-marging nav-link" role="button"><i class="fa fa-fw fa-sign-out"></i> Logout</a></li></div></div></nav></header><main class=""><div style="margin-bottom: 40px; margin-top: 40px;" class="justify-content-md-center row"><div class="col-md-10"><div style="width: 100%; height: 20px; overflow-x: scroll;"><div style="width: 0px; height: 20px;"></div></div><div class="scroll-horizontal"><table class="table table-bordered table-striped fixed-width strata-editor-result-table "><thead><tr><th>id</th><th>price</th><th>property_type</th><th>room_type</th><th>amenities</th><th>accommodates</th><th>bathrooms</th><th>bed_type</th><th>cancellation_policy</th><th>cleaning_fee</th><th>city</th><th>host_identity_verified</th><th>host_response_rate</th><th>host_since</th><th>neighbourhood</th><th>number_of_reviews</th><th>review_scores_rating</th><th>zipcode</th><th>bedrooms</th><th>beds</th></tr></thead><tbody id="myTable"><tr class=""><td>12513361</td><td>555.68</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning","Smoke detector","Carbon monoxide 
+detector",Essentials,"Lock on bedroom door",Hangers,Iron}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>t</td><td>89%</td><td>2015-11-18</td><td>East Harlem</td><td>3</td><td>87</td><td>10029</td><td>0</td><td>1</td></tr><tr class=""><td>7196412</td><td>366.36</td><td>Cabin</td><td>Private room</td><td>{"Wireless
+ Internet",Kitchen,Washer,Dryer,"Smoke detector","First aid kit","Fire 
+extinguisher",Essentials,"Hair dryer","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>3</td><td>Real Bed</td><td>moderate</td><td>FALSE</td><td>LA</td><td>f</td><td>100%</td><td>2016-09-10</td><td>Valley Glen</td><td>14</td><td>91</td><td>91606</td><td>1</td><td>1</td></tr><tr class=""><td>16333776</td><td>482.83</td><td>House</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Free parking on 
+premises","Pets live on this property",Dog(s),"Indoor 
+fireplace","Buzzer/wireless intercom",Heating,Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Shampoo,"24-hour check-in",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: 
+en.hosting_amenity_50","Self Check-In",Lockbox}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>SF</td><td>t</td><td>100%</td><td>2013-12-26</td><td>Richmond District</td><td>117</td><td>96</td><td>94118</td><td>1</td><td>1</td></tr><tr class=""><td>1786412</td><td>448.86</td><td>Apartment</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Suitable for 
+events","Smoke detector","Carbon monoxide detector","First aid 
+kit","Fire extinguisher",Essentials,Shampoo,"Lock on bedroom 
+door",Hangers,"translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>93%</td><td>2010-05-11</td><td>Williamsburg</td><td>8</td><td>86</td><td>11211</td><td>1</td><td>1</td></tr><tr class=""><td>14575777</td><td>506.89</td><td>Villa</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises",Essentials,Shampoo,"translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>6</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>70%</td><td>2015-10-22</td><td></td><td>2</td><td>100</td><td>90703</td><td>3</td><td>3</td></tr><tr class=""><td>20515889</td><td>720.79</td><td>Villa</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Free parking on 
+premises","Pets allowed","Elevator in building","Hot tub","Indoor 
+fireplace",Heating,"Family/kid friendly","Suitable for 
+events",Washer,Dryer,"Smoke detector","Carbon monoxide detector","First 
+aid kit","Safety card","Fire extinguisher",Essentials,Shampoo}</td><td>8</td><td>3</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>f</td><td>20%</td><td>2014-05-26</td><td>Topanga</td><td>0</td><td></td><td>90265</td><td>3</td><td>4</td></tr><tr class=""><td>13783491</td><td>516.48</td><td>Villa</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Pool,Kitchen,"Free 
+parking on premises","Pets allowed","Hot tub","Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","Fire 
+extinguisher",Essentials,Shampoo,"Lock on bedroom door","24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace"}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>90%</td><td>2015-08-20</td><td>Hollywood Hills</td><td>1</td><td>100</td><td>90046</td><td>1</td><td>1</td></tr><tr class=""><td>6591755</td><td>529.33</td><td>Villa</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Pets allowed","Pets live on 
+this property","Buzzer/wireless intercom",Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide detector","Fire
+ extinguisher",Essentials,Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace"}</td><td>16</td><td>3</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>91%</td><td>2016-01-16</td><td>Long Beach</td><td>88</td><td>90</td><td>90803</td><td>4</td><td>6</td></tr><tr class=""><td>5203241</td><td>679.68</td><td>Villa</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Pool,Kitchen,Gym,"Hot tub","Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","Fire 
+extinguisher",Essentials,Shampoo,"24-hour check-in",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace"}</td><td>6</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2017-08-17</td><td>Rancho Palos Verdes</td><td>1</td><td>100</td><td>90275</td><td>2</td><td>4</td></tr><tr class=""><td>11508891</td><td>633.51</td><td>Villa</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet",Kitchen,"Free parking on premises",Heating,"Family/kid 
+friendly",Washer,Dryer,Essentials,"24-hour check-in","Laptop friendly 
+workspace","Self Check-In",Keypad}</td><td>10</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>94%</td><td>2015-08-12</td><td>Malibu</td><td>43</td><td>92</td><td>90265</td><td>2</td><td>2</td></tr><tr class=""><td>18823930</td><td>485.98</td><td>Villa</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet",Kitchen,"Free parking on premises","Smoking allowed","Pets 
+allowed",Heating,"Family/kid friendly",Washer,Dryer,Essentials,"24-hour 
+check-in",Hangers,Iron,"Laptop friendly workspace"}</td><td>6</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>90%</td><td>2013-12-06</td><td>Harbor Gateway</td><td>27</td><td>93</td><td>90501</td><td>2</td><td>2</td></tr><tr class=""><td>15523281</td><td>598.9</td><td>Villa</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Pool,Kitchen,"Free parking on 
+premises",Gym,Breakfast,"Hot tub","Indoor fireplace",Heating,"Family/kid
+ friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Private 
+entrance"}</td><td>4</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>f</td><td>100%</td><td>2014-05-20</td><td></td><td>5</td><td>88</td><td>90704</td><td>1</td><td>2</td></tr><tr class=""><td>19698509</td><td>741.76</td><td>Villa</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Free 
+parking on premises",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Shampoo,Hangers,"Hair dryer",Iron}</td><td>8</td><td>4</td><td>Real Bed</td><td>super_strict_60</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2015-01-05</td><td></td><td>0</td><td></td><td>90277</td><td>4</td><td>4</td></tr><tr class=""><td>12497464</td><td>431.75</td><td>Apartment</td><td>Private room</td><td>{"Wireless
+ Internet",Kitchen,"Buzzer/wireless intercom",Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide detector"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td></td><td>2014-01-14</td><td>Crown Heights</td><td>2</td><td>80</td><td>11238</td><td>1</td><td>1</td></tr><tr class=""><td>17764793</td><td>469.13</td><td>Villa</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Pool,"Pets live on 
+this property",Dog(s),"Free parking on street","Hot 
+tub",Heating,"Family/kid friendly","Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2012-11-02</td><td>Topanga</td><td>6</td><td>100</td><td>91364</td><td>1</td><td>1</td></tr><tr class=""><td>11136854</td><td>485.2</td><td>Villa</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on premises","Pets 
+allowed",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop 
+friendly workspace","Self Check-In","Doorman Entry"}</td><td>6</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2014-08-12</td><td>Temple City</td><td>28</td><td>96</td><td>91780</td><td>2</td><td>4</td></tr><tr class=""><td>15754561</td><td>482.83</td><td>Apartment</td><td>Entire home/apt</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,"Family/kid friendly","Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Hangers,Iron,"Laptop friendly workspace"}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2017-06-07</td><td>Bedford-Stuyvesant</td><td>0</td><td></td><td>11216</td><td>1</td><td>1</td></tr><tr class=""><td>4471474</td><td>313.55</td><td>House</td><td>Shared room</td><td>{}</td><td>1</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2013-12-20</td><td></td><td>0</td><td></td><td>91405</td><td>1</td><td>1</td></tr><tr class=""><td>13207484</td><td>368.89</td><td>House</td><td>Shared room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Smoking 
+allowed","Pets allowed","Pets live on this 
+property",Dog(s),"Buzzer/wireless intercom",Heating,"Family/kid 
+friendly","Suitable for events",Washer,"Smoke detector","Carbon monoxide
+ detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,"24-hour check-in",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace"}</td><td>4</td><td>1</td><td>Couch</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>25%</td><td>2016-12-05</td><td>Hollywood</td><td>0</td><td></td><td>90028</td><td>1</td><td>1</td></tr><tr class=""><td>7837072</td><td>336.73</td><td>House</td><td>Private room</td><td>{Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on premises","Indoor
+ fireplace",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","Fire extinguisher",Essentials,Shampoo,Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>FALSE</td><td>LA</td><td>f</td><td>98%</td><td>2017-07-02</td><td></td><td>0</td><td></td><td>91770</td><td>1</td><td>1</td></tr><tr class=""><td>7823396</td><td>417.44</td><td>House</td><td>Private room</td><td>{TV,"Cable
+ TV","Wireless Internet","Air conditioning",Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide 
+detector",Essentials,Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","Private entrance","Hot water","Bed linens","Extra pillows 
+and blankets","Ethernet connection",Microwave,"Coffee 
+maker",Refrigerator,"Dishes and silverware","Long term stays 
+allowed","Wide doorway","Flat, smooth pathway to front door","Well-lit 
+path to entrance","Step-free access","Wide clearance to bed","Step-free 
+access","Wide entryway"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2015-05-27</td><td>Richmond Hill</td><td>74</td><td>96</td><td>11419</td><td>1</td><td>1</td></tr><tr class=""><td>7966742</td><td>423.41</td><td>House</td><td>Private room</td><td>{Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on premises","Indoor
+ fireplace",Heating,Washer,Dryer,"Smoke detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2012-06-27</td><td>Bedford-Stuyvesant</td><td>18</td><td>89</td><td>11221</td><td>1</td><td>1</td></tr><tr class=""><td>257568</td><td>389.18</td><td>House</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Buzzer/wireless 
+intercom",Heating,"Smoke detector","Carbon monoxide detector","First aid
+ kit","Fire extinguisher",Essentials,Shampoo,"Lock on bedroom 
+door","24-hour check-in",Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50","Self Check-In",Keypad}</td><td>3</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2013-04-20</td><td>Astoria</td><td>246</td><td>90</td><td>11106</td><td>1</td><td>1</td></tr><tr class=""><td>18073864</td><td>482.83</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Pool,Kitchen,"Free 
+parking on premises",Gym,"Hot tub",Heating,"Family/kid 
+friendly",Washer,Dryer,Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer","translation missing: 
+en.hosting_amenity_50"}</td><td>4</td><td>2</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2012-09-27</td><td></td><td>10</td><td>90</td><td>91302</td><td>2</td><td>2</td></tr><tr class=""><td>13667633</td><td>541.61</td><td>House</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Free parking on 
+premises","Pets live on this property",Dog(s),Heating,"Family/kid 
+friendly","Suitable for events",Washer,Dryer,"Smoke detector","Carbon 
+monoxide detector","First aid kit","Safety card","Fire 
+extinguisher",Essentials,Shampoo}</td><td>5</td><td>2</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2015-05-08</td><td>Westchester/Playa Del Rey</td><td>8</td><td>94</td><td>90045</td><td>2</td><td>2</td></tr><tr class=""><td>590903</td><td>662.01</td><td>House</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Pool,Kitchen,"Free 
+parking on premises","Indoor fireplace",Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","Self Check-In",Lockbox,"Private entrance"}</td><td>6</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2015-03-01</td><td>Mid-Wilshire</td><td>2</td><td>100</td><td>90048</td><td>3</td><td>3</td></tr><tr class=""><td>19161964</td><td>391.2</td><td>House</td><td>Private room</td><td>{Internet,"Wireless
+ Internet","Air conditioning","Free parking on premises","Hot 
+tub","Family/kid friendly",Washer,Dryer,"Smoke detector","Carbon 
+monoxide detector","First aid kit",Shampoo,"Hair dryer",Iron}</td><td>1</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>LA</td><td>f</td><td></td><td>2016-07-14</td><td></td><td>0</td><td></td><td>90650</td><td>1</td><td>1</td></tr><tr class=""><td>19475815</td><td>470.05</td><td>House</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Pets 
+allowed",Breakfast,Heating,Essentials,Shampoo,"Lock on bedroom 
+door",Hangers,"Hair dryer",Iron,"Laptop friendly workspace","translation
+ missing: en.hosting_amenity_49","translation missing: 
+en.hosting_amenity_50","Private living room"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>60%</td><td>2015-11-14</td><td>Astoria</td><td>4</td><td>93</td><td>11106</td><td>1</td><td>1</td></tr><tr class=""><td>1407841</td><td>412.71</td><td>House</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises",Breakfast,"Indoor fireplace",Heating,Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2016-05-27</td><td>Mar Vista</td><td>18</td><td>99</td><td>90066</td><td>1</td><td>1</td></tr><tr class=""><td>1535628</td><td>407.75</td><td>House</td><td>Private room</td><td>{"Wireless
+ Internet",Kitchen,"Pets live on this 
+property",Dog(s),Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Hangers,"translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2016-03-10</td><td>Hunts Point</td><td>4</td><td>100</td><td>10474</td><td>1</td><td>1</td></tr><tr class=""><td>6888244</td><td>501.06</td><td>House</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Pool,Kitchen,"Pets 
+allowed",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Fire extinguisher",Essentials,Shampoo,"Lock on bedroom 
+door",Hangers,"Hair dryer",Iron,"Laptop friendly workspace","Self 
+Check-In",Lockbox,"Bed linens","Extra pillows and blankets"}</td><td>2</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2011-03-25</td><td>Carroll Gardens</td><td>8</td><td>83</td><td>11231</td><td>1</td><td>1</td></tr><tr class=""><td>8889145</td><td>539.36</td><td>House</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on premises","Indoor
+ fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector",Essentials}</td><td>4</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td></td><td>2012-01-06</td><td>Studio City</td><td>0</td><td></td><td>91604</td><td>2</td><td>2</td></tr><tr class=""><td>15073872</td><td>474.49</td><td>House</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Free 
+parking on premises","Smoking allowed","Pets allowed",Gym,"Pets live on 
+this property",Dog(s),Cat(s),Heating,"Family/kid friendly","Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Shampoo,"Lock on bedroom door","24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace"}</td><td>4</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>LA</td><td>t</td><td>100%</td><td>2013-03-06</td><td>Studio City</td><td>6</td><td>100</td><td>91604</td><td>1</td><td>1</td></tr><tr class=""><td>10174146</td><td>695.65</td><td>House</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Pool,Kitchen,"Free parking on 
+premises","Hot tub","Indoor fireplace",Heating,"Family/kid 
+friendly","Suitable for events",Washer,Dryer,"Smoke detector","Carbon 
+monoxide detector","First aid kit","Fire extinguisher",Shampoo}</td><td>9</td><td>4</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>83%</td><td>2015-08-09</td><td></td><td>1</td><td>100</td><td>90048</td><td>5</td><td>5</td></tr><tr class=""><td>12600300</td><td>424.85</td><td>House</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,Hangers,"Hair dryer","Laptop friendly 
+workspace","translation missing: en.hosting_amenity_50","Self 
+Check-In",Keypad}</td><td>4</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>f</td><td>99%</td><td>2017-05-06</td><td>Flushing</td><td>12</td><td>93</td><td>11355</td><td>1</td><td>2</td></tr><tr class=""><td>62427</td><td>667.83</td><td>Villa</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Pool,Kitchen,"Free 
+parking on premises",Gym,"Indoor fireplace",Heating,"Family/kid 
+friendly","Suitable for events",Washer,Dryer,"Smoke detector","Carbon 
+monoxide detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,"24-hour check-in",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","Self Check-In","Doorman Entry"}</td><td>12</td><td>4</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2011-09-28</td><td>Topanga</td><td>32</td><td>99</td><td>90290</td><td>4</td><td>4</td></tr><tr class=""><td>5447656</td><td>417.44</td><td>House</td><td>Private room</td><td>{TV,"Cable
+ TV","Wireless Internet","Air conditioning",Kitchen,"Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector",Essentials,Hangers,"Hair 
+dryer",Iron}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>DC</td><td>t</td><td>100%</td><td>2011-03-25</td><td>Logan Circle</td><td>7</td><td>97</td><td>20005</td><td>1</td><td>1</td></tr><tr class=""><td>2974433</td><td>529.33</td><td>House</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Free parking on 
+premises","Hot tub",Heating,"Family/kid friendly","Suitable for 
+events","Smoke detector","Carbon monoxide detector","First aid 
+kit","Fire extinguisher",Essentials,Shampoo}</td><td>4</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>LA</td><td>t</td><td>100%</td><td>2011-11-28</td><td>Long Beach</td><td>109</td><td>97</td><td>90803</td><td>1</td><td>1</td></tr><tr class=""><td>17010314</td><td>430.41</td><td>House</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning",Pool,Kitchen,"Free parking on 
+premises","Pets allowed","Pets live on this 
+property",Dog(s),Cat(s),"Other pet(s)",Heating,"Family/kid 
+friendly",Washer,"Smoke detector","Carbon monoxide detector","First aid 
+kit","Fire extinguisher",Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer","Laptop friendly workspace","translation 
+missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2013-03-06</td><td></td><td>33</td><td>99</td><td>91506</td><td>1</td><td>1</td></tr><tr class=""><td>20167264</td><td>385.01</td><td>House</td><td>Private room</td><td>{Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises",Breakfast,Heating,Washer,Dryer,"Smoke detector","Carbon 
+monoxide detector",Essentials,Shampoo,"translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>1</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>Boston</td><td>t</td><td>100%</td><td>2013-03-06</td><td>Dorchester</td><td>220</td><td>98</td><td>2125</td><td>1</td><td>1</td></tr><tr class=""><td>4156913</td><td>570.38</td><td>House</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on premises","Pets 
+allowed",Heating,"Family/kid friendly","Suitable for 
+events",Washer,Dryer,"Smoke detector","Carbon monoxide detector","First 
+aid kit","Safety card","Fire extinguisher",Essentials,Hangers,"Hair 
+dryer","Laptop friendly workspace"}</td><td>6</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2016-05-30</td><td>The Rockaways</td><td>2</td><td>100</td><td>11509</td><td>4</td><td>5</td></tr><tr class=""><td>11993790</td><td>602.83</td><td>House</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Breakfast,"Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_50","Private entrance","Children��s books and 
+toys","Fireplace guards",Microwave,"Coffee 
+maker",Refrigerator,Dishwasher,"Dishes and silverware","Cooking 
+basics",Oven,Stove}</td><td>7</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2017-05-06</td><td>Windsor Terrace</td><td>0</td><td></td><td>11218</td><td>5</td><td>5</td></tr><tr class=""><td>10989476</td><td>455.39</td><td>House</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,Heating,Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid 
+kit",Essentials,Shampoo,"24-hour check-in",Hangers,"Laptop friendly 
+workspace","translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50","Hot water","Bed linens"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>SF</td><td>t</td><td>100%</td><td>2013-04-20</td><td>Bernal Heights</td><td>28</td><td>98</td><td>94110</td><td>1</td><td>1</td></tr><tr class=""><td>7939396</td><td>459.51</td><td>Villa</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Pets 
+allowed",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","Fire extinguisher","24-hour 
+check-in",Hangers,"Hair dryer"}</td><td>6</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>91%</td><td>2014-01-16</td><td>Long Beach</td><td>120</td><td>89</td><td>90803</td><td>2</td><td>3</td></tr><tr class=""><td>17840858</td><td>529.83</td><td>House</td><td>Private room</td><td>{"Cable TV",Internet,"Wireless Internet","Air conditioning",Pool,"Hot tub",Heating,"Smoke detector",Essentials}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>f</td><td></td><td>2015-03-10</td><td>Mid-Wilshire</td><td>0</td><td></td><td>90048</td><td>1</td><td>1</td></tr><tr class=""><td>2444713</td><td>506.89</td><td>House</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Smoke detector","Carbon 
+monoxide detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,"24-hour check-in",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2014-06-20</td><td>Echo Park</td><td>117</td><td>98</td><td>90039</td><td>0</td><td>1</td></tr><tr class=""><td>13276443</td><td>470.05</td><td>House</td><td>Private room</td><td>{"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Indoor 
+fireplace",Washer,"Smoke detector","Carbon monoxide detector","First aid
+ kit",Shampoo}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>SF</td><td>t</td><td></td><td>2013-05-15</td><td>Russian Hill</td><td>2</td><td>100</td><td>94109</td><td>1</td><td>1</td></tr><tr class=""><td>19947454</td><td>459.51</td><td>Apartment</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet",Kitchen,"Free parking on premises","Hot 
+tub",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2014-04-14</td><td>Westwood</td><td>10</td><td>98</td><td>90024</td><td>1</td><td>1</td></tr><tr class=""><td>13653016</td><td>417.44</td><td>Other</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning","Smoking allowed",Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide detector","First aid 
+kit","Safety card","Fire extinguisher","24-hour check-in"}</td><td>3</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>LA</td><td>f</td><td>100%</td><td>2016-11-28</td><td></td><td>1</td><td>20</td><td>90731</td><td>1</td><td>1</td></tr><tr class=""><td>20942873</td><td>480.4</td><td>Condominium</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Free parking on 
+premises","Indoor fireplace",Heating,Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector",Essentials,Shampoo,"Lock on bedroom
+ door",Hangers,"Hair dryer","translation missing: 
+en.hosting_amenity_49","translation missing: 
+en.hosting_amenity_50","Self Check-In",Lockbox}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>LA</td><td>t</td><td>80%</td><td>2013-09-13</td><td>Santa Monica</td><td>28</td><td>96</td><td>90405</td><td>1</td><td>1</td></tr><tr class=""><td>19583726</td><td>552.15</td><td>Condominium</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Buzzer/wireless 
+intercom",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","Fire extinguisher",Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50"}</td><td>4</td><td>2</td><td>Real Bed</td><td>moderate</td><td>FALSE</td><td>Boston</td><td>f</td><td></td><td>2015-06-08</td><td>South Boston</td><td>15</td><td>97</td><td>2127</td><td>2</td><td>2</td></tr><tr class=""><td>17196103</td><td>482.83</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Free 
+parking on premises","Elevator in building","Indoor 
+fireplace","Buzzer/wireless 
+intercom",Heating,Washer,Dryer,Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace"}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>89%</td><td>2009-12-25</td><td>Marina Del Rey</td><td>11</td><td>91</td><td>90292</td><td>1</td><td>1</td></tr><tr class=""><td>9318115</td><td>680.13</td><td>House</td><td>Entire home/apt</td><td>{Internet,"Wireless
+ Internet",Kitchen,"Free parking on premises","Pets allowed","Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,"Smoke detector","Carbon
+ monoxide detector","First aid kit",Essentials,Shampoo,Hangers,"Hair 
+dryer","Laptop friendly workspace","Private entrance"}</td><td>5</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>f</td><td>100%</td><td>2016-06-13</td><td>Malibu</td><td>0</td><td></td><td>90265</td><td>3</td><td>3</td></tr><tr class=""><td>9937434</td><td>497.67</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"translation missing: en.hosting_amenity_50","Self 
+Check-In",Keypad}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2016-03-23</td><td>Hermosa Beach</td><td>1</td><td>60</td><td>90254</td><td>0</td><td>1</td></tr><tr class=""><td>4454031</td><td>685.65</td><td>House</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet",Kitchen,"Free parking on premises","Pets live on this 
+property","Other pet(s)",Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,"Hair dryer"}</td><td>6</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2014-10-08</td><td></td><td>6</td><td>100</td><td>90266</td><td>4</td><td>4</td></tr><tr class=""><td>16259866</td><td>361.09</td><td>House</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide detector","First aid 
+kit","Fire extinguisher",Essentials,"Lock on bedroom 
+door",Hangers,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>f</td><td>100%</td><td>2016-01-11</td><td>East New York</td><td>14</td><td>85</td><td>11208</td><td>1</td><td>1</td></tr><tr class=""><td>20282225</td><td>507.52</td><td>Apartment</td><td>Private room</td><td>{Internet,"Wireless
+ Internet","Air conditioning",Kitchen,Heating,Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","Fire 
+extinguisher",Essentials,Shampoo,Hangers,"Hair dryer","Laptop friendly 
+workspace"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>Boston</td><td>f</td><td>100%</td><td>2014-07-14</td><td>Dorchester</td><td>1</td><td>100</td><td>2125</td><td>1</td><td>1</td></tr><tr class=""><td>23269</td><td>519.3</td><td>Condominium</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning","Wheelchair accessible",Kitchen,"Free 
+parking on premises",Gym,"Pets live on this property","Elevator in 
+building",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector",Shampoo,Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace"}</td><td>6</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2015-11-29</td><td></td><td>10</td><td>100</td><td>90802</td><td>2</td><td>2</td></tr><tr class=""><td>7637363</td><td>661.87</td><td>House</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet",Pool,Kitchen,"Free parking on premises","Hot tub","Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector",Essentials,Shampoo,Hangers,"Hair 
+dryer",Iron,"translation missing: en.hosting_amenity_50"}</td><td>8</td><td>3</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2014-01-12</td><td>Manhattan Beach</td><td>5</td><td>96</td><td>90266</td><td>4</td><td>4</td></tr><tr class=""><td>6391342</td><td>417.44</td><td>House</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Free 
+parking on premises",Breakfast,"Indoor fireplace","Buzzer/wireless 
+intercom",Heating,Washer,Dryer,"Smoke detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,"24-hour check-in",Iron}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>f</td><td>100%</td><td>2014-06-24</td><td>Westlake</td><td>36</td><td>96</td><td>90005</td><td>1</td><td>1</td></tr><tr class=""><td>11606802</td><td>455.39</td><td>House</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Free 
+parking on premises","Pets allowed",Breakfast,Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Safety card","Fire 
+extinguisher",Essentials,Shampoo,"24-hour check-in",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","Private entrance"}</td><td>5</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2016-06-22</td><td>Westlake</td><td>45</td><td>97</td><td>90015</td><td>1</td><td>2</td></tr><tr class=""><td>12289125</td><td>486.75</td><td>House</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,Breakfast,"Indoor 
+fireplace","Buzzer/wireless intercom",Heating,"Smoke detector","Carbon 
+monoxide detector","Fire 
+extinguisher",Essentials,Shampoo,Hangers,Iron,"Laptop friendly 
+workspace","translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50"}</td><td>6</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>80%</td><td>2014-02-02</td><td>Westlake</td><td>31</td><td>95</td><td>90057</td><td>2</td><td>4</td></tr><tr class=""><td>19875244</td><td>630.99</td><td>Condominium</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV","Wireless Internet","Air conditioning",Kitchen,Breakfast,"Indoor 
+fireplace","Buzzer/wireless intercom",Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","Safety card","Fire 
+extinguisher",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop 
+friendly workspace"}</td><td>6</td><td>2</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>Chicago</td><td>t</td><td>100%</td><td>2010-09-27</td><td>Lakeview</td><td>0</td><td></td><td>60657</td><td>2</td><td>2</td></tr><tr class=""><td>392794</td><td>270.81</td><td>House</td><td>Shared room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Heating,Washer,Dryer,"Smoke detector","Carbon 
+monoxide detector","First aid kit","Safety card","Fire 
+extinguisher",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>4</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>LA</td><td>t</td><td>99%</td><td>2016-03-27</td><td>Westlake</td><td>35</td><td>85</td><td>90006</td><td>1</td><td>10</td></tr><tr class=""><td>992786</td><td>474.49</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Pets allowed","Pets live on this 
+property",Dog(s),"Buzzer/wireless intercom",Heating,"Smoke 
+detector","First aid kit","Safety card",Essentials,Shampoo,"24-hour 
+check-in",Hangers,Iron,"Laptop friendly workspace","translation missing:
+ en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>67%</td><td>2012-02-04</td><td>Harlem</td><td>21</td><td>96</td><td>10035</td><td>1</td><td>1</td></tr><tr class=""><td>13650177</td><td>438.2</td><td>Apartment</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning","Wheelchair 
+accessible",Kitchen,Elevator,Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","First aid kit","Fire 
+extinguisher",Essentials,Hangers,Iron,"Laptop friendly workspace","Hot 
+water","Bed linens",Microwave,"Coffee maker",Refrigerator,"Dishes and 
+silverware","Cooking basics",Oven,Stove}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2015-07-04</td><td>Harlem</td><td>2</td><td>100</td><td>10030</td><td>1</td><td>1</td></tr><tr class=""><td>5792141</td><td>486.75</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Buzzer/wireless 
+intercom",Heating,"Family/kid friendly","Smoke detector",Hangers,"Hair 
+dryer",Iron}</td><td>4</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>80%</td><td>2010-12-03</td><td>Harlem</td><td>85</td><td>90</td><td>10027</td><td>1</td><td>2</td></tr><tr class=""><td>6390069</td><td>570.38</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet",Kitchen,"Buzzer/wireless intercom",Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide detector",Essentials,"Laptop
+ friendly workspace"}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td></td><td>2011-01-17</td><td>Harlem</td><td>0</td><td></td><td>10027</td><td>2</td><td>3</td></tr><tr class=""><td>8579757</td><td>501.06</td><td>Condominium</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Elevator,Heating,"Family/kid 
+friendly","Suitable for events","Smoke detector","Carbon monoxide 
+detector","First aid kit",Essentials,Shampoo,"Lock on bedroom 
+door",Hangers,"Hair dryer",Iron}</td><td>5</td><td>1</td><td>Real Bed</td><td>moderate</td><td>FALSE</td><td>NYC</td><td>f</td><td>93%</td><td>2017-01-05</td><td>Harlem</td><td>2</td><td>90</td><td>10039</td><td>2</td><td>3</td></tr><tr class=""><td>14115855</td><td>448.86</td><td>Apartment</td><td>Private room</td><td>{TV,"Wireless
+ Internet",Kitchen,Washer,Dryer,"Smoke 
+detector",Essentials,Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","Hot water","Bed linens","Extra pillows and blankets"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>FALSE</td><td>NYC</td><td>f</td><td>100%</td><td>2013-08-10</td><td>Harlem</td><td>8</td><td>100</td><td>10031</td><td>1</td><td>1</td></tr><tr class=""><td>685364</td><td>478.75</td><td>Apartment</td><td>Entire home/apt</td><td>{Internet,"Wireless Internet","Air conditioning",Kitchen,"Hot tub","Buzzer/wireless intercom",Heating}</td><td>3</td><td>1</td><td>Real Bed</td><td>moderate</td><td>FALSE</td><td>NYC</td><td>t</td><td>100%</td><td>2012-05-12</td><td>Harlem</td><td>7</td><td>100</td><td>10035</td><td>1</td><td>1</td></tr><tr class=""><td>20031027</td><td>409.43</td><td>Apartment</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,"Smoking allowed","Pets 
+allowed",Heating,"Smoke detector","Carbon monoxide 
+detector",Essentials,"Lock on bedroom door",Hangers,Iron,"Laptop 
+friendly workspace","Private living room"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2014-12-16</td><td>Harlem</td><td>4</td><td>100</td><td>10030</td><td>1</td><td>1</td></tr><tr class=""><td>2399406</td><td>389.18</td><td>Apartment</td><td>Private room</td><td>{"Wireless
+ Internet",Kitchen,"Pets allowed",Breakfast,Elevator,"Family/kid 
+friendly","Smoke detector","Carbon monoxide detector","First aid 
+kit",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>f</td><td>100%</td><td>2016-02-28</td><td>Harlem</td><td>12</td><td>92</td><td>10030</td><td>1</td><td>1</td></tr><tr class=""><td>15991936</td><td>551.75</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Fire extinguisher",Essentials,Shampoo,"Lock 
+on bedroom door",Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","Self Check-In",Keypad,"Private living room","High 
+chair","Children��s books and toys","Window guards",Crib,"Pack ��n 
+Play/travel crib","Children��s dinnerware","Hot water","Bed 
+linens","Extra pillows and blankets","Coffee 
+maker",Refrigerator,Dishwasher,"Dishes and silverware","Cooking 
+basics",Oven,Stove,"Luggage dropoff allowed","Long term stays 
+allowed","Wide hallway clearance","Wide doorway","Well-lit path to 
+entrance"}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2013-09-20</td><td>Harlem</td><td>19</td><td>99</td><td>10027</td><td>2</td><td>2</td></tr><tr class=""><td>17497415</td><td>404.31</td><td>Apartment</td><td>Shared room</td><td>{"Wireless
+ Internet",Kitchen,Elevator,"Family/kid friendly","Smoke 
+detector",Essentials,Shampoo,"Hair dryer",Iron,"translation missing: 
+en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>t</td><td>22%</td><td>2016-10-08</td><td>Harlem</td><td>6</td><td>84</td><td>10027</td><td>1</td><td>1</td></tr><tr class=""><td>5321538</td><td>674.52</td><td>Townhouse</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Indoor 
+fireplace","Smoke detector","Carbon monoxide detector","translation 
+missing: en.hosting_amenity_49","translation missing: 
+en.hosting_amenity_50"}</td><td>8</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2013-09-13</td><td>Harlem</td><td>0</td><td></td><td>10027</td><td>0</td><td>1</td></tr><tr class=""><td>6228461</td><td>409.43</td><td>Apartment</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Breakfast,"Pets live on this 
+property",Cat(s),"Buzzer/wireless intercom",Heating,Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid kit","Fire 
+extinguisher",Essentials,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50","Hot
+ water","Bed linens","Extra pillows and blankets",Microwave,"Coffee 
+maker",Refrigerator,Dishwasher,"Dishes and silverware","Cooking 
+basics",Oven,Stove}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2013-03-19</td><td>Harlem</td><td>7</td><td>97</td><td>10030</td><td>1</td><td>1</td></tr><tr class=""><td>12954602</td><td>465.4</td><td>Loft</td><td>Entire home/apt</td><td>{Internet,"Wireless
+ Internet","Free parking on premises",Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide detector","First aid 
+kit","Fire extinguisher",Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace","Self 
+Check-In",Lockbox}</td><td>3</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>f</td><td>100%</td><td>2015-11-14</td><td>Westside</td><td>43</td><td>97</td><td>90064</td><td>0</td><td>2</td></tr><tr class=""><td>15409556</td><td>355.53</td><td>House</td><td>Private room</td><td>{"Family/kid friendly","Smoke detector"}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2015-12-14</td><td>Hawthorne</td><td>5</td><td>92</td><td>90250</td><td>1</td><td>1</td></tr><tr class=""><td>14057888</td><td>494.16</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV","Wireless Internet","Air conditioning","Wheelchair 
+accessible",Kitchen,Doorman,Elevator,"Buzzer/wireless 
+intercom",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","Fire 
+extinguisher",Essentials,Shampoo,Hangers,Iron,"translation missing: 
+en.hosting_amenity_50"}</td><td>4</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2013-05-20</td><td>Harlem</td><td>16</td><td>91</td><td>10037</td><td>1</td><td>1</td></tr><tr class=""><td>21005590</td><td>444.27</td><td>Apartment</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,"Smoking allowed","Pets 
+allowed",Elevator,Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid 
+kit",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron}</td><td>3</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>t</td><td></td><td>2016-03-20</td><td>Harlem</td><td>0</td><td></td><td>10039</td><td>2</td><td>1</td></tr><tr class=""><td>4698479</td><td>510.59</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning","Wheelchair 
+accessible",Kitchen,Gym,Elevator,"Buzzer/wireless 
+intercom",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","Safety card",Shampoo,Hangers,"Hair
+ dryer","Laptop friendly workspace"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td></td><td>2015-12-10</td><td>Harlem</td><td>5</td><td>100</td><td>10026</td><td>1</td><td>1</td></tr><tr class=""><td>6661783</td><td>448.86</td><td>Apartment</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Smoke detector","Carbon 
+monoxide detector","Fire extinguisher",Essentials,Shampoo,"Lock on 
+bedroom door",Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace",Other}</td><td>2</td><td>2</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2014-04-26</td><td>Harlem</td><td>28</td><td>91</td><td>10027</td><td>1</td><td>1</td></tr><tr class=""><td>2243670</td><td>519.3</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,"Buzzer/wireless intercom",Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","Safety card","Fire 
+extinguisher",Essentials,Shampoo,Hangers,Iron,"Laptop friendly 
+workspace"}</td><td>3</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>90%</td><td>2013-03-05</td><td>Harlem</td><td>15</td><td>97</td><td>10027</td><td>2</td><td>2</td></tr><tr class=""><td>5059214</td><td>431.75</td><td>Apartment</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises",Breakfast,Heating,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Fire extinguisher",Essentials,Shampoo,"Lock 
+on bedroom door",Hangers,"Laptop friendly workspace","Private living 
+room"}</td><td>1</td><td>3</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>f</td><td></td><td>2014-03-14</td><td>Harlem</td><td>0</td><td></td><td>10030</td><td>2</td><td>1</td></tr><tr class=""><td>16354537</td><td>478.75</td><td>Apartment</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,Heating,Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector",Essentials,Shampoo,Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","Bed linens"}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>t</td><td>100%</td><td>2013-12-21</td><td>Harlem</td><td>14</td><td>99</td><td>10027</td><td>1</td><td>1</td></tr><tr class=""><td>20556938</td><td>438.2</td><td>Apartment</td><td>Private room</td><td>{TV,Washer,"Cable
+ TV",Dryer,Internet,"Smoke detector","Wireless Internet","Carbon 
+monoxide detector","Air conditioning",Kitchen,Essentials,"Lock on 
+bedroom door",Hangers,"Hair dryer",Doorman,"Laptop friendly 
+workspace","translation missing: 
+en.hosting_amenity_49",Elevator,"Private living room",Heating}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>f</td><td>100%</td><td>2016-04-12</td><td>Harlem</td><td>41</td><td>94</td><td>10029</td><td>1</td><td>1</td></tr><tr class=""><td>10165064</td><td>431.75</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Gym,Elevator,"Buzzer/wireless 
+intercom",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector",Essentials,Shampoo,"Hair 
+dryer",Iron,"Laptop friendly workspace"}</td><td>3</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>t</td><td></td><td>2016-11-02</td><td>Harlem</td><td>1</td><td>100</td><td>10039</td><td>2</td><td>3</td></tr><tr class=""><td>7359527</td><td>434.38</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises",Breakfast,"Buzzer/wireless intercom",Heating,"Smoke 
+detector","Carbon monoxide detector","Fire 
+extinguisher",Essentials,Shampoo}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>f</td><td></td><td>2015-04-08</td><td>Harlem</td><td>1</td><td>100</td><td>10030</td><td>0</td><td>1</td></tr><tr class=""><td>4902799</td><td>621.26</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning","Wheelchair 
+accessible",Kitchen,Elevator,Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide detector","Fire
+ extinguisher",Essentials,Shampoo}</td><td>4</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td></td><td>2011-12-23</td><td>Harlem</td><td>0</td><td></td><td>10026</td><td>2</td><td>2</td></tr><tr class=""><td>20976767</td><td>431.75</td><td>Apartment</td><td>Shared room</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises",Elevator,"Buzzer/wireless intercom",Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide detector","First aid 
+kit",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Pull-out Sofa</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2013-03-19</td><td>Harlem</td><td>30</td><td>94</td><td>10026</td><td>1</td><td>1</td></tr><tr class=""><td>10869168</td><td>552.15</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Free 
+parking on premises","Buzzer/wireless intercom",Heating,"Family/kid 
+friendly",Dryer,"Smoke detector",Essentials,Shampoo,"Hair dryer",Iron}</td><td>7</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>f</td><td>90%</td><td>2013-01-01</td><td>Harlem</td><td>29</td><td>88</td><td>10027</td><td>3</td><td>4</td></tr><tr class=""><td>7591555</td><td>424.85</td><td>Apartment</td><td>Entire home/apt</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,"Hair dryer",Iron,"Laptop friendly 
+workspace"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>f</td><td>38%</td><td>2013-06-02</td><td>Harlem</td><td>7</td><td>95</td><td>10039</td><td>1</td><td>1</td></tr><tr class=""><td>15454112</td><td>459.51</td><td>House</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Heating,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Safety card","Fire 
+extinguisher",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop 
+friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: 
+en.hosting_amenity_50","Private entrance"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2014-06-30</td><td>Harlem</td><td>73</td><td>94</td><td>10030</td><td>1</td><td>1</td></tr><tr class=""><td>16662334</td><td>400.73</td><td>House</td><td>Private room</td><td>{"Wireless
+ Internet",Kitchen,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Fire extinguisher",Essentials,Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2014-09-20</td><td>Gardena</td><td>6</td><td>97</td><td>90249</td><td>1</td><td>1</td></tr><tr class=""><td>19118005</td><td>552.15</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Buzzer/wireless intercom",Heating}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>t</td><td>0%</td><td>2009-11-12</td><td>Alphabet City</td><td>11</td><td>93</td><td>10009</td><td>1</td><td>2</td></tr><tr class=""><td>11972209</td><td>548.06</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Heating,"Family/kid friendly","Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Shampoo,"24-hour check-in",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace","Private entrance",Bathtub,"Baby
+ bath","High chair","Children��s books and toys","Pack ��n Play/travel 
+crib","Children��s dinnerware"}</td><td>7</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2014-01-29</td><td>East Harlem</td><td>140</td><td>94</td><td>10029</td><td>3</td><td>3</td></tr><tr class=""><td>8284881</td><td>621.46</td><td>House</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Pool,Kitchen,"Free 
+parking on premises",Gym,"Hot tub","Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Shampoo,"24-hour check-in",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace"}</td><td>8</td><td>3</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>f</td><td>100%</td><td>2016-11-01</td><td>Pacific Palisades</td><td>1</td><td></td><td>90272</td><td>4</td><td>6</td></tr><tr class=""><td>14276565</td><td>486.75</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,"Buzzer/wireless 
+intercom",Heating,"Family/kid friendly","Smoke detector","Carbon 
+monoxide detector",Essentials,Hangers,"Hair dryer",Iron,"Laptop friendly
+ workspace"}</td><td>4</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>87%</td><td>2014-01-22</td><td>Harlem</td><td>0</td><td></td><td>10027</td><td>2</td><td>2</td></tr><tr class=""><td>10923708</td><td>340.12</td><td>Apartment</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Pets live on this 
+property",Cat(s),"Buzzer/wireless intercom",Heating,"Family/kid 
+friendly",Washer,"Smoke detector","Carbon monoxide detector","First aid 
+kit","Fire extinguisher",Essentials}</td><td>1</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>t</td><td>100%</td><td>2014-06-30</td><td>Harlem</td><td>166</td><td>91</td><td>10031</td><td>1</td><td>1</td></tr><tr class=""><td>1998513</td><td>438.2</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Pets 
+allowed",Elevator,Heating,Washer,Dryer,"Smoke detector","Carbon monoxide
+ detector",Shampoo,"Self Check-In",Lockbox}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>80%</td><td>2013-12-21</td><td>Harlem</td><td>11</td><td>87</td><td>10027</td><td>0</td><td>1</td></tr><tr class=""><td>18211034</td><td>449.98</td><td>Apartment</td><td>Private room</td><td>{"Wireless
+ Internet",Kitchen,"Smoke detector","Carbon monoxide detector","First 
+aid kit",Essentials,"Lock on bedroom door","Laptop friendly 
+workspace","translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>f</td><td></td><td>2016-01-07</td><td>Harlem</td><td>0</td><td></td><td>10030</td><td>1</td><td>1</td></tr><tr class=""><td>13041230</td><td>431.75</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Wheelchair accessible",Kitchen,"Free parking on 
+premises",Elevator,"Hot tub","Buzzer/wireless 
+intercom",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,Hangers,Iron,"translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>3</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>t</td><td></td><td>2013-12-21</td><td>Harlem</td><td>31</td><td>87</td><td>10027</td><td>1</td><td>1</td></tr><tr class=""><td>8256789</td><td>552.15</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Elevator,Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo,"Hair dryer",Iron}</td><td>4</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2015-10-02</td><td>Harlem</td><td>0</td><td></td><td>10027</td><td>2</td><td>2</td></tr><tr class=""><td>7347593</td><td>504.34</td><td>House</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet",Kitchen,"Smoking allowed","Indoor fireplace","Buzzer/wireless
+ intercom",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","First aid kit",Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace","Self 
+Check-In",Lockbox,"Hot water","Private bathroom","Bed linens","Extra 
+pillows and blankets",Microwave,"Coffee maker",Refrigerator,"Dishes and 
+silverware","Cooking basics",Oven,Stove,"BBQ grill","Patio or 
+balcony","Garden or backyard","Luggage dropoff allowed","Cleaning before
+ checkout","Wide hallway clearance","Wide doorway","Wide doorway","Wide 
+clearance to bed","Step-free access","Wide doorway","Fixed grab bars for
+ shower &amp; toilet","Accessible-height toilet","Wide clearance to 
+shower &amp; toilet","Step-free access","Wide entryway"}</td><td>4</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>t</td><td>100%</td><td>2013-12-11</td><td>Harlem</td><td>14</td><td>89</td><td>10037</td><td>1</td><td>2</td></tr><tr class=""><td>17009057</td><td>552.15</td><td>House</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Free parking on 
+premises",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","Fire 
+extinguisher",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop 
+friendly workspace","translation missing: en.hosting_amenity_50","Self 
+Check-In",Lockbox}</td><td>4</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>SF</td><td>t</td><td>80%</td><td>2014-02-23</td><td>Bernal Heights</td><td>25</td><td>98</td><td>94110</td><td>2</td><td>2</td></tr><tr class=""><td>18333003</td><td>570.04</td><td>Apartment</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Pool,Kitchen,Gym,"Elevator in 
+building",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector",Essentials,Shampoo,Hangers,"Laptop friendly 
+workspace","Private living room"}</td><td>4</td><td>2</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>Chicago</td><td>f</td><td>80%</td><td>2015-06-30</td><td>Loop</td><td>0</td><td></td><td>60606</td><td>2</td><td>2</td></tr><tr class=""><td>16274069</td><td>482.83</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises","Buzzer/wireless intercom",Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide detector","First aid 
+kit",Essentials}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2014-02-11</td><td>Bedford-Stuyvesant</td><td>13</td><td>92</td><td>11216</td><td>2</td><td>3</td></tr><tr class=""><td>20049857</td><td>474.49</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Smoke 
+detector",Essentials,Hangers,"Hair dryer","Laptop friendly 
+workspace","translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>f</td><td></td><td>2017-10-07</td><td>West Hollywood</td><td>0</td><td></td><td>90046</td><td>1</td><td>1</td></tr><tr class=""><td>18157879</td><td>570.38</td><td>House</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Breakfast,Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Safety card","Fire 
+extinguisher",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace"}</td><td>7</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>Chicago</td><td>t</td><td></td><td>2016-01-20</td><td>Lincoln Park</td><td>9</td><td>98</td><td>60614</td><td>3</td><td>3</td></tr><tr class=""><td>17666136</td><td>538.91</td><td>Apartment</td><td>Entire home/apt</td><td>{Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Buzzer/wireless 
+intercom",Heating,"Smoke detector","Carbon monoxide detector","First aid
+ kit",Essentials,Shampoo}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td></td><td>2014-11-17</td><td>East Village</td><td>1</td><td>100</td><td>10003</td><td>2</td><td>3</td></tr><tr class=""><td>2135314</td><td>519.3</td><td>Loft</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Doorman,Elevator,"Hot tub","Buzzer/wireless 
+intercom",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials,Shampoo}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>f</td><td></td><td>2015-07-09</td><td>East Village</td><td>3</td><td>87</td><td>10003</td><td>1</td><td>1</td></tr><tr class=""><td>5321584</td><td>717.01</td><td>House</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Free parking on 
+premises","Indoor fireplace",Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","Safety card","Fire extinguisher",Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace"}</td><td>8</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>SF</td><td>t</td><td></td><td>2014-09-20</td><td>Hayes Valley</td><td>4</td><td>100</td><td>94102</td><td>4</td><td>5</td></tr><tr class=""><td>13121821</td><td>501.06</td><td>Apartment</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Heating,"Smoke detector","First aid 
+kit",Essentials,Hangers,"Hair dryer",Iron,"Laptop friendly workspace"}</td><td>1</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>f</td><td></td><td>2014-09-20</td><td>Park Slope</td><td>0</td><td></td><td>11215</td><td>1</td><td>1</td></tr><tr class=""><td>12282255</td><td>449.98</td><td>Apartment</td><td>Entire home/apt</td><td>{Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Pets allowed","Family/kid 
+friendly","Smoke detector","Fire extinguisher",Shampoo}</td><td>3</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>t</td><td>100%</td><td>2015-04-23</td><td>Harlem</td><td>23</td><td>94</td><td>10030</td><td>0</td><td>1</td></tr><tr class=""><td>6630775</td><td>504.34</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Pets live 
+on this property",Dog(s),Heating,"Family/kid friendly","Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop 
+friendly workspace","translation missing: en.hosting_amenity_50","Self 
+Check-In","Smart lock"}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2014-06-30</td><td>Harlem</td><td>40</td><td>97</td><td>10030</td><td>1</td><td>4</td></tr><tr class=""><td>9479348</td><td>598.9</td><td>Apartment</td><td>Entire home/apt</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Smoke detector","Carbon 
+monoxide detector",Essentials,Shampoo,Hangers,Iron,"translation missing:
+ en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>7</td><td>2</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>f</td><td>100%</td><td>2017-07-03</td><td>Hell's Kitchen</td><td>1</td><td>60</td><td>10036</td><td>3</td><td>4</td></tr><tr class=""><td>3710477</td><td>674.52</td><td>House</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV","Wireless Internet","Air conditioning",Kitchen,Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide detector","First aid 
+kit","Safety card","Fire extinguisher",Essentials,Shampoo,"Lock on 
+bedroom door",Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","Self Check-In",Lockbox,"Private entrance","Hot water","Bed 
+linens","Extra pillows and blankets",Microwave,"Coffee 
+maker",Refrigerator,"Dishes and silverware","Cooking basics",Oven,Stove}</td><td>14</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2017-10-07</td><td>Astoria</td><td>0</td><td></td><td>11103</td><td>6</td><td>8</td></tr><tr class=""><td>13978228</td><td>578.38</td><td>House</td><td>Entire home/apt</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises","Smoking allowed","Pets allowed","Hot tub","Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","First aid kit",Essentials,Hangers,"Hair dryer","Laptop 
+friendly workspace"}</td><td>4</td><td>3</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>LA</td><td>t</td><td>100%</td><td>2015-08-05</td><td>Mount Washington</td><td>0</td><td></td><td>90065</td><td>2</td><td>2</td></tr><tr class=""><td>16028615</td><td>487.52</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning","Wheelchair 
+accessible",Pool,Kitchen,Gym,"Elevator in building","Hot tub","Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid kit","Safety card","Fire
+ extinguisher",Essentials,Shampoo,"Lock on bedroom door","24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace"}</td><td>4</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>Chicago</td><td>t</td><td>100%</td><td>2016-09-02</td><td>Loop</td><td>1</td><td>100</td><td>60605</td><td>2</td><td>2</td></tr><tr class=""><td>15027031</td><td>548.06</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Pets live 
+on this property",Cat(s),"Buzzer/wireless intercom",Heating,"Family/kid 
+friendly",Washer,Dryer,Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace"}</td><td>3</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2014-09-20</td><td>Alphabet City</td><td>12</td><td>98</td><td>10009</td><td>1</td><td>2</td></tr><tr class=""><td>19245819</td><td>424.85</td><td>Apartment</td><td>Private room</td><td>{Internet,"Wireless Internet",Kitchen,"Pets live on this property",Dog(s),Washer,Dryer,"Smoke detector","Fire extinguisher"}</td><td>1</td><td>1</td><td>Real Bed</td><td>moderate</td><td>FALSE</td><td>SF</td><td>t</td><td></td><td>2010-03-16</td><td>Mission District</td><td>12</td><td>90</td><td>94110</td><td>1</td><td>1</td></tr><tr class=""><td>10770929</td><td>561.68</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Heating,"Smoke detector","Carbon monoxide 
+detector","Fire extinguisher",Essentials,Hangers,"Hair dryer",Iron}</td><td>8</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2014-06-30</td><td>Harlem</td><td>28</td><td>92</td><td>10026</td><td>2</td><td>5</td></tr><tr class=""><td>12592005</td><td>524.7</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Safety card","Fire 
+extinguisher",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td>90%</td><td>2017-07-06</td><td>Harlem</td><td>10</td><td>100</td><td>10039</td><td>1</td><td>2</td></tr><tr class=""><td>1174876</td><td>424.85</td><td>House</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning","Pets live on this 
+property",Dog(s),Cat(s),Heating,"Smoke detector","Carbon monoxide 
+detector","First aid kit",Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>t</td><td>100%</td><td>2015-06-10</td><td>Harlem</td><td>69</td><td>93</td><td>10027</td><td>1</td><td>1</td></tr><tr class=""><td>20888646</td><td>423.41</td><td>House</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Heating,Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50","Private living room","Private 
+entrance"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>LA</td><td>f</td><td>98%</td><td>2016-11-20</td><td>Canoga Park</td><td>4</td><td>100</td><td>91303</td><td>0</td><td>1</td></tr><tr class=""><td>7834158</td><td>599.15</td><td>Villa</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet",Kitchen,"Free parking on 
+premises","Indoor fireplace","Buzzer/wireless 
+intercom",Heating,"Family/kid friendly","Suitable for 
+events",Washer,Dryer,"Smoke detector",Essentials,Shampoo,"24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace"}</td><td>10</td><td>4</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2014-08-21</td><td>Redondo Beach</td><td>39</td><td>94</td><td>90278</td><td>4</td><td>5</td></tr><tr class=""><td>6692191</td><td>423.41</td><td>House</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises",Breakfast,Heating,Washer,Dryer,"Smoke detector","Carbon 
+monoxide detector","First aid kit","Safety card","Fire 
+extinguisher",Essentials,Shampoo,"Lock on bedroom door","24-hour 
+check-in",Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","translation missing: en.hosting_amenity_49","translation 
+missing: en.hosting_amenity_50"}</td><td>1</td><td>2</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>LA</td><td>t</td><td>100%</td><td>2013-09-13</td><td>Westlake</td><td>9</td><td>100</td><td>90015</td><td>1</td><td>1</td></tr><tr class=""><td>8084290</td><td>497.67</td><td>Condominium</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet","Air 
+conditioning",Kitchen,Breakfast,Elevator,Heating,"Suitable for 
+events",Washer,Dryer,"Smoke detector","Carbon monoxide detector","First 
+aid kit","Safety card","Fire extinguisher",Essentials,Shampoo,"Lock on 
+bedroom door",Hangers,"Hair dryer",Iron,"Private entrance",Bathtub,"Hot 
+water","Bed linens","Extra pillows and blankets",Microwave,"Coffee 
+maker",Refrigerator,Dishwasher,"Dishes and silverware","Cooking 
+basics",Oven,Stove,"Patio or balcony","Step-free access","Flat, smooth 
+pathway to front door","Host greets you"}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2012-05-09</td><td>Harlem</td><td>7</td><td>94</td><td>10027</td><td>1</td><td>2</td></tr><tr class=""><td>6689195</td><td>433.07</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Pool,Kitchen,Gym,"Pets live on this 
+property",Cat(s),"Buzzer/wireless intercom","Family/kid 
+friendly",Washer,Dryer,"Smoke detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop 
+friendly workspace"}</td><td>4</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>LA</td><td>t</td><td></td><td>2013-05-30</td><td>Burbank</td><td>1</td><td></td><td>91504</td><td>2</td><td>2</td></tr><tr class=""><td>11157369</td><td>409.43</td><td>Apartment</td><td>Private room</td><td>{TV,Internet,"Wireless Internet","Air conditioning",Kitchen,Heating,Essentials,Shampoo,Iron,"Laptop friendly workspace"}</td><td>1</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>t</td><td></td><td>2014-06-30</td><td>Harlem</td><td>0</td><td></td><td>10026</td><td>1</td><td>1</td></tr><tr class=""><td>15705947</td><td>478.75</td><td>Apartment</td><td>Entire home/apt</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,"Family/kid friendly","Suitable 
+for events",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Safety card",Essentials,Shampoo,"Hair 
+dryer",Iron,"Laptop friendly workspace"}</td><td>4</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td>80%</td><td>2015-07-09</td><td>Upper East Side</td><td>7</td><td>90</td><td>10065</td><td>1</td><td>2</td></tr><tr class=""><td>11456592</td><td>529.83</td><td>Loft</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning","Free parking on 
+premises",Breakfast,Heating,Essentials,"Lock on bedroom door","Laptop 
+friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>FALSE</td><td>NYC</td><td>f</td><td>100%</td><td>2011-02-23</td><td>Williamsburg</td><td>0</td><td></td><td>11211</td><td>0</td><td>2</td></tr><tr class=""><td>1077375</td><td>400.73</td><td>Apartment</td><td>Private room</td><td>{"Wireless
+ Internet",Heating,"Family/kid friendly","Smoke detector","Carbon 
+monoxide detector","Fire 
+extinguisher",Essentials,Shampoo,Hangers,Iron,"Laptop friendly 
+workspace","translation missing: en.hosting_amenity_50"}</td><td>1</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td></td><td>2015-04-04</td><td>Sunset Park</td><td>1</td><td>100</td><td>11220</td><td>1</td><td>1</td></tr><tr class=""><td>17681277</td><td>529.83</td><td>Apartment</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on premises","Indoor
+ fireplace",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Fire extinguisher",Essentials,Shampoo}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2011-04-07</td><td>Echo Park</td><td>0</td><td></td><td>90026</td><td>1</td><td>1</td></tr><tr class=""><td>10842610</td><td>519.3</td><td>Apartment</td><td>Entire home/apt</td><td>{"Wireless
+ Internet",Kitchen,"Free parking on premises","Pets 
+allowed",Heating,"Family/kid friendly","Smoke detector","Carbon monoxide
+ detector","24-hour check-in",Hangers,"Hair dryer",Iron,"Laptop friendly
+ workspace"}</td><td>6</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2012-07-07</td><td>The Rockaways</td><td>5</td><td>100</td><td>11692</td><td>3</td><td>3</td></tr><tr class=""><td>8881130</td><td>448.86</td><td>House</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on premises","Pets 
+allowed","Pets live on this property",Heating,"Family/kid 
+friendly",Dryer,"Smoke detector","Carbon monoxide detector","First aid 
+kit","Fire extinguisher",Essentials,Shampoo,"Hair dryer",Iron}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2011-03-25</td><td>Woodland Hills/Warner Center</td><td>17</td><td>98</td><td>91364</td><td>1</td><td>1</td></tr><tr class=""><td>14236545</td><td>490.53</td><td>Apartment</td><td>Private room</td><td>{"Wireless
+ Internet",Heating,"Smoke detector","Carbon monoxide detector","First 
+aid kit","Safety card","Fire 
+extinguisher",Essentials,Shampoo,Hangers,"translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>Boston</td><td>t</td><td>100%</td><td>2014-12-23</td><td>Dorchester</td><td>7</td><td>83</td><td>2125</td><td>1</td><td>1</td></tr><tr class=""><td>14219018</td><td>444.27</td><td>Apartment</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Gym,"Buzzer/wireless intercom",Heating,"Family/kid
+ friendly","translation missing: 
+en.hosting_amenity_50",Microwave,Refrigerator,"Dishes and 
+silverware","Cooking basics",Oven,Stove}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>NYC</td><td>t</td><td>89%</td><td>2013-06-07</td><td>Harlem</td><td>97</td><td>91</td><td>10027</td><td>1</td><td>1</td></tr><tr class=""><td>8596057</td><td>420.47</td><td>House</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning",Pool,Kitchen,"Free parking on 
+premises",Breakfast,"Family/kid 
+friendly",Washer,Dryer,Essentials,Shampoo,Hangers,"Hair dryer","Self 
+Check-In","Doorman Entry"}</td><td>1</td><td>2</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>LA</td><td>f</td><td>100%</td><td>2016-04-20</td><td></td><td>0</td><td></td><td>91748</td><td>1</td><td>1</td></tr><tr class=""><td>11525500</td><td>478.75</td><td>Apartment</td><td>Entire home/apt</td><td>{"Wireless
+ Internet","Air conditioning",Heating,Washer,Dryer,Essentials,"Laptop 
+friendly workspace",Microwave,Refrigerator,Dishwasher,"Dishes and 
+silverware","Cooking basics",Oven,Stove,"Host greets you"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2017-10-07</td><td>Williamsburg</td><td>2</td><td>100</td><td>11206</td><td>1</td><td>1</td></tr><tr class=""><td>533884</td><td>662.01</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Pets allowed",Heating,"Family/kid
+ friendly",Washer,Dryer,Shampoo,"24-hour check-in",Hangers,"Hair 
+dryer","Laptop friendly workspace"}</td><td>6</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>SF</td><td>f</td><td></td><td>2016-01-20</td><td>Cow Hollow</td><td>0</td><td></td><td>94123</td><td>3</td><td>3</td></tr><tr class=""><td>3585452</td><td>380.67</td><td>House</td><td>Private room</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Free parking on 
+premises",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","Fire extinguisher",Essentials}</td><td>1</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>LA</td><td>t</td><td></td><td>2015-03-06</td><td>Reseda</td><td>3</td><td>100</td><td>91335</td><td>1</td><td>1</td></tr><tr class=""><td>14320263</td><td>321.89</td><td>House</td><td>Shared room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Smoke detector","Carbon 
+monoxide detector",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop 
+friendly workspace","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>1</td><td>2</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>f</td><td>100%</td><td>2016-03-27</td><td>Westlake</td><td>0</td><td></td><td>90005</td><td>1</td><td>1</td></tr><tr class=""><td>11399852</td><td>424.85</td><td>House</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,Heating,"Smoke detector","Carbon 
+monoxide detector",Essentials,Shampoo,"Lock on bedroom 
+door",Hangers,"Hair dryer","translation missing: 
+en.hosting_amenity_49","translation missing: en.hosting_amenity_50"}</td><td>2</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>t</td><td>100%</td><td>2015-06-10</td><td>Harlem</td><td>41</td><td>95</td><td>10027</td><td>1</td><td>2</td></tr><tr class=""><td>12386097</td><td>366.36</td><td>Apartment</td><td>Shared room</td><td>{TV,Internet,"Wireless Internet","Air conditioning",Kitchen,Heating,"Smoke detector",Essentials,Shampoo}</td><td>1</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2015-10-02</td><td>Harlem</td><td>18</td><td>96</td><td>10027</td><td>1</td><td>2</td></tr><tr class=""><td>1404510</td><td>534.71</td><td>Townhouse</td><td>Entire home/apt</td><td>{TV,"Wireless
+ Internet",Kitchen,"Free parking on premises","Indoor 
+fireplace",Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"Laptop 
+friendly workspace"}</td><td>6</td><td>2</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>LA</td><td>t</td><td>100%</td><td>2015-09-02</td><td>West Los Angeles</td><td>10</td><td>95</td><td>90025</td><td>3</td><td>3</td></tr><tr class=""><td>4691130</td><td>444.27</td><td>House</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Pool,Kitchen,"Free parking on 
+premises",Breakfast,Heating,"Family/kid friendly",Washer,Dryer,"Smoke 
+detector","Carbon monoxide detector","First aid 
+kit",Essentials,Shampoo,"Lock on bedroom door",Hangers,"Hair 
+dryer",Iron,"Laptop friendly workspace"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>LA</td><td>t</td><td>0%</td><td>2013-10-28</td><td></td><td>0</td><td></td><td>91324</td><td>1</td><td>1</td></tr><tr class=""><td>16449480</td><td>468.21</td><td>Apartment</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air conditioning",Kitchen,"Smoking 
+allowed","Pets allowed",Doorman,Elevator,Heating,Washer,Dryer,"Smoke 
+detector","Fire extinguisher",Essentials,Shampoo}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>f</td><td>100%</td><td>2012-03-26</td><td>East Harlem</td><td>4</td><td>90</td><td>10029</td><td>1</td><td>1</td></tr><tr class=""><td>15149374</td><td>444.27</td><td>Bungalow</td><td>Private room</td><td>{"Wireless
+ Internet",Kitchen,"Pets allowed","Indoor 
+fireplace",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Fire extinguisher",Essentials,Shampoo,"Lock 
+on bedroom door",Hangers,"Hair dryer",Iron,"Laptop friendly workspace"}</td><td>3</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>t</td><td>97%</td><td>2012-08-17</td><td>Venice</td><td>3</td><td>100</td><td>90291</td><td>0</td><td>1</td></tr><tr class=""><td>10089727</td><td>594.02</td><td>Villa</td><td>Entire home/apt</td><td>{"Air
+ conditioning","Wheelchair accessible",Pool,"Free parking on 
+premises",Gym,"Hot tub","Family/kid friendly",Essentials,Shampoo}</td><td>6</td><td>1</td><td>Real Bed</td><td>strict</td><td>TRUE</td><td>LA</td><td>f</td><td>100%</td><td>2015-06-06</td><td></td><td>15</td><td>89</td><td>90265</td><td>3</td><td>4</td></tr><tr class=""><td>3323232</td><td>460.52</td><td>Condominium</td><td>Private room</td><td>{TV,"Wireless
+ Internet","Air conditioning",Kitchen,Breakfast,Heating,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector","First aid kit","Fire extinguisher",Essentials,Shampoo,"Lock 
+on bedroom door",Hangers,"Hair dryer",Iron,"Laptop friendly 
+workspace","Private living room"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>f</td><td>100%</td><td>2015-10-02</td><td>Harlem</td><td>0</td><td></td><td>10039</td><td>1</td><td>1</td></tr><tr class=""><td>20899396</td><td>470.05</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Buzzer/wireless 
+intercom",Heating,"Family/kid friendly","Smoke detector","Carbon 
+monoxide detector",Essentials,Shampoo}</td><td>4</td><td>1</td><td>Real Bed</td><td>flexible</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2013-12-21</td><td>Harlem</td><td>4</td><td>85</td><td>10030</td><td>1</td><td>2</td></tr><tr class=""><td>3380585</td><td>436.94</td><td>Apartment</td><td>Private room</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Elevator,"Buzzer/wireless 
+intercom",Heating,Washer,Dryer,"Smoke detector","Carbon monoxide 
+detector",Essentials}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>FALSE</td><td>NYC</td><td>f</td><td></td><td>2014-06-30</td><td>Harlem</td><td>2</td><td>70</td><td>10027</td><td>1</td><td>1</td></tr><tr class=""><td>16073836</td><td>431.75</td><td>House</td><td>Private room</td><td>{TV,Internet,"Wireless Internet","Free parking on premises","Family/kid friendly",Washer,Dryer,Essentials}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>LA</td><td>f</td><td></td><td>2016-09-02</td><td>Culver City</td><td>0</td><td></td><td>90232</td><td>1</td><td>1</td></tr><tr class=""><td>20257960</td><td>478.75</td><td>House</td><td>Private room</td><td>{Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Family/kid 
+friendly",Washer,Dryer,"Smoke detector","First aid kit","Fire 
+extinguisher"}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>LA</td><td>t</td><td></td><td>2013-03-06</td><td>Mid-Wilshire</td><td>0</td><td></td><td>90035</td><td>1</td><td>1</td></tr><tr class=""><td>4559312</td><td>510.59</td><td>Apartment</td><td>Entire home/apt</td><td>{Internet,"Wireless
+ Internet","Air conditioning",Kitchen,"Pets live on this 
+property",Dog(s),"Buzzer/wireless intercom",Heating,"Family/kid 
+friendly","Smoke detector","Carbon monoxide 
+detector",Shampoo,Hangers,"Hair dryer","Laptop friendly workspace"}</td><td>4</td><td>1</td><td>Real Bed</td><td>strict</td><td>FALSE</td><td>NYC</td><td>t</td><td></td><td>2013-03-06</td><td>Harlem</td><td>2</td><td>80</td><td>10026</td><td>2</td><td>2</td></tr><tr class=""><td>2165604</td><td>368.89</td><td>Apartment</td><td>Private room</td><td>{"Wireless
+ Internet","Air conditioning",Kitchen,"Smoking allowed",Breakfast,"Pets 
+live on this property",Cat(s),"Buzzer/wireless intercom","Smoke 
+detector","Carbon monoxide detector","First aid kit","Fire 
+extinguisher",Essentials,Shampoo,Hangers,"Hair dryer",Iron,"translation 
+missing: en.hosting_amenity_49","translation missing: 
+en.hosting_amenity_50","Host greets you"}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2016-03-14</td><td>Harlem</td><td>7</td><td>94</td><td>10039</td><td>1</td><td>1</td></tr><tr class=""><td>18385413</td><td>409.43</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable
+ TV",Internet,"Wireless Internet","Air 
+conditioning",Kitchen,Elevator,"Buzzer/wireless 
+intercom",Heating,Essentials,Hangers,"Hair dryer",Iron}</td><td>2</td><td>1</td><td>Real Bed</td><td>flexible</td><td>FALSE</td><td>NYC</td><td>f</td><td></td><td>2014-06-04</td><td>Harlem</td><td>18</td><td>91</td><td>10030</td><td>0</td><td>1</td></tr><tr class=""><td>9470528</td><td>477.91</td><td>Apartment</td><td>Entire home/apt</td><td>{TV,"Cable TV",Internet,"Wireless Internet","Air conditioning",Kitchen,Heating,"Smoke detector",Essentials}</td><td>2</td><td>1</td><td>Real Bed</td><td>moderate</td><td>TRUE</td><td>NYC</td><td>t</td><td>100%</td><td>2015-10-02</td><td>Harlem</td><td>5</td><td>88</td><td>10027</td><td>0</td><td>2</td></tr></tbody></table></div></div></div></main><footer class="footer"><div class="container" style="width: 310px;"><div style="display: flex; justify-content: space-between;"><a href="https://platform.stratascratch.com/terms-and-conditions">Terms and Conditions</a><span>•</span><a href="https://platform.stratascratch.com/privacy-policy">Privacy Policy</a></div></div></footer></div><script type="text/javascript" src="airbnb_files/runtime.js"></script><script type="text/javascript" src="airbnb_files/styles.js"></script><script type="text/javascript" src="airbnb_files/vendorsmain.js"></script><script type="text/javascript" src="airbnb_files/main.js"></script><div class="ReactModalPortal"></div><iframe name="__privateStripeMetricsController3580" allowtransparency="true" scrolling="no" allow="payment *" src="airbnb_files/m-outer-9fe86c29346daf61dc2cc0586b4fad18.htm" aria-hidden="true" tabindex="-1" style="border: medium none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;" frameborder="0"></iframe></body></html>
