@@ -15,7 +15,12 @@ Each of the following case study questions can be answered using a single SQL st
 -- 6. Which item was purchased first by the customer after they became a member?  
 -- 7. Which item was purchased just before the customer became a member?  
 -- 8. What is the total items and amount spent for each member before they became a member?  
--- 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?  
+-- 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?  
 -- 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+
+BONUS QUESTIONS:
+-- 11. Creating basic data tables that Danny and his team can use to quickly derive insights without needing to join the underlying tables using SQL (Data model in the Dataset Source link)
+-- 12. get further information about the ranking of customer products, but it is not necessary  the ranking for non-member purchases, it is only expected to put null ranking values for the records when customers are not yet part of the loyalty program.
+
 
 Dataset Source: https://8weeksqlchallenge.com/case-study-1/
