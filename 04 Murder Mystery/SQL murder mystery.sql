@@ -65,7 +65,7 @@ AND plate_number LIKE '%H42W%'
 | 67318 | Jeremy Bowers | 48Z55         | gold              | 0H42W2       |
 
 --Insights from second witness
-/*Recognized the filler at gym on January the 9th*/
+/*Recognized the killer at gym on January the 9th*/
 SELECT
 	p.id
 	,p.name
