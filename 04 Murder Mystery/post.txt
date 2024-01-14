@@ -1,0 +1,21 @@
+Resolviendo Misterios con SQL 🕵️‍♂️🔍
+
+
+Una vez que dominamos un conocimiento, el verdadero aprendizaje se encuentra cuando lo ponemos en práctica.
+
+
+En esta oportunidad comparto un reto bastante interesante, se trata de un juego de detectives, pero para #datanerds📊. Te conviertes en el detective que debe usar SQL para resolver un caso, donde aplicas desde simples consultas hasta trucos avanzados como las CTE!
+
+
+Personalmente, decidí aceptar este reto y documentar cada paso en mi repositorio. No dudes en consultarlo y feel free de dar tu feedback sobre cómo has hecho para resolver este misterio!
+
+
+No dudes en aplicar lo aprendido y sentirte como un auténtico Detective digno de una novela de Agatha Christie! 🕵️‍♂️
+
+
+Challenge: https://lnkd.in/dkn_hUdY
+
+SQL Code: https://lnkd.in/dchg4ckf
+
+
+#SQL #data #dataanalysis #dataanalytics #BI #learningbydoing #businessintelligence
