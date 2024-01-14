@@ -1,8 +1,51 @@
-# SQL: Playing with queries
-
-## Interview Questions
-  Practicing SQL with Interviews Questions from Tech Companies like Meta(FB), Microsoft, Airbnb, Apple, Amazon and more
+# Spotlight Gazette Newsletter
   
-  I'll try to upload new SQL Queries every week in order to have an up to date portfolio and you can be able to see my progress as Data Analyst until I finally join to the Tech World 😊.
+💡 Send personalized customer emails based off marketing analytics for a Streaming Company such as Netflix, to recommend their users new content to watch based on their behavior and past visualizations on the platform.
 
-Also, I hope this can be used for future Data Analysts as an inspiration 💪
+### Key Business Requirements:
+
+1. Identify top 2 categories for each customer based off their past rental history
+2. For each customer recommend up to 3 popular unwatched films for each category
+3. Generate 1st category insights that includes:
+    - How many total films have they watched in their top category?
+    - How many more films has the customer watched compared to the average DVD Rental Co customer?
+    - How does the customer rank in terms of the top X% compared to all other customers in this film category?
+4. Generate 2nd insights that includes:
+    - How many total films has the customer watched in this category?
+    - What proportion of each customer’s total films watched does this count make?
+5. Identify each customer’s favorite actor and film count, then recommend up to 3 more unwatched films starring the same actor
+
+
+### Data Points:
+
+**Category Data Points**
+
+1. Top ranking category name: `cat_1`
+2. Top ranking category customer insight: `insight_cat_1`
+3. Top ranking category film recommendations: `cat_1_reco_1`, `cat_1_reco_2`, `cat_1_reco_3`
+4. 2nd ranking category name: `cat_2`
+5. 2nd ranking category customer insight: `insight_cat_2`
+6. 2nd ranking category film recommendations: `cat_2_reco_1`, `cat_2_reco_2`, `cat_2_reco_3`
+
+**Actor Data Points**
+
+1. Top actor name: `actor`
+2. Top actor insight: `insight_actor`
+3. Actor film recommendations: `actor_reco_1`, `actor_reco_2`, `actor_reco_3`
+
+**DATA POINTS OUTPUT**
+
+  <aside>
+📌 Output Section 1: You’ve watched {`rental_count`} {`category_name`} films, that’s {`average_comparison`} more than the Dvd Rental Co average and puts you in the top {`percentile`}% of {`category_name`} gurus!
+
+</aside>
+
+<aside>
+📌 Output Section 2: You’ve watched {`rental_count`} {`category_name`} films making up {`category_percentage`}% of your entire viewing history!
+
+</aside>
+
+<aside>
+📌 Output Section 3: You’ve watched <`rental_count`> films featuring <`actor_name`>! Here are some other films <`first_name`> stars in that might interest you!
+
+</aside>
